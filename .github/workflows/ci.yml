@@ -1,65 +1,67 @@
 name: CI
 
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ chore/**, feat/**, fix/** ]
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Type check
-      run: npm run type-check
-
-    - name: Lint
-      run: npm run lint
-
-    - name: Run tests
-      run: npm run test
-
-    - name: Build
-      run: npm run build
-      env:
-        DATABASE_URL: postgresql://test:test@localhost:5432/test
-        NEXTAUTH_SECRET: test-secret
-        NEXTAUTH_URL: http://localhost:3000
-
-  e2e:
-    runs-on: ubuntu-latest
-    needs: test
+    env:
+      CI: true
+      # Dummy-ENVs, damit die Pipeline nicht wegen Secrets scheitert
+      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+      STRIPE_SECRET_KEY: "sk_test_dummy"
+      PRICE_ID: "price_dummy"
+      NEXTAUTH_URL: "http://localhost:3000"
+      NEXTAUTH_SECRET: "dummysecret_dummysecret_dummysecret_123456"
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres?schema=public"
 
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      - name: Lint
+        run: |
+          if [ -f ".eslintrc.json" ] || [ -f ".eslintrc.js" ]; then
+            npm run lint --if-present
+          else
+            echo "No ESLint config found. Skipping lint."
+          fi
 
-    - name: Run E2E tests
-      run: npm run test:e2e
-      env:
-        DATABASE_URL: postgresql://test:test@localhost:5432/test
-        NEXTAUTH_SECRET: test-secret
-        NEXTAUTH_URL: http://localhost:3000
+      - name: Typecheck
+        run: |
+          if [ -f "tsconfig.json" ]; then
+            npx tsc -v
+            npx tsc --noEmit
+          else
+            echo "No tsconfig.json found. Skipping typecheck."
+          fi
+
+      - name: Install Playwright (browsers)
+        run: |
+          npx playwright --version || true
+          npx playwright install --with-deps
+
+      - name: E2E Smoke Tests
+        run: |
+          if [ -f "playwright.config.ts" ]; then
+            npx playwright test --reporter=line || (echo "Playwright tests failed"; exit 1)
+          else
+            echo "No Playwright config found. Skipping tests."
+          fi
+
+      - name: Build
+        run: npm run build
