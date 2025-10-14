@@ -1,0 +1,382 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "clear": "Limpiar",
+    "select": "Seleccionar",
+    "required": "Obligatorio",
+    "optional": "Opcional",
+    "yes": "Sí",
+    "no": "No",
+    "today": "Hoy",
+    "tomorrow": "Mañana",
+    "yesterday": "Ayer"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "contact": "Contacto",
+    "dashboard": "Panel",
+    "bookings": "Reservas",
+    "services": "Servicios",
+    "staff": "Personal",
+    "availability": "Disponibilidad",
+    "settings": "Ajustes",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "signOut": "Cerrar sesión"
+  },
+  "marketing": {
+    "hero": {
+      "title": "Reservas profesionales para tu negocio",
+      "subtitle": "Optimiza tu agenda con nuestro sistema integral de reservas. Ideal para salones, clínicas, estudios y negocios de servicios.",
+      "cta": "Empezar prueba gratuita",
+      "demo": "Ver demo"
+    },
+    "features": {
+      "title": "Todo lo que necesitas para gestionar reservas",
+      "subtitle": "Funciones potentes para negocios de servicios",
+      "items": {
+        "multiTenant": {
+          "title": "Arquitectura multi-tenant",
+          "description": "Cada negocio obtiene su página de reservas con marca propia"
+        },
+        "staffManagement": {
+          "title": "Gestión de personal",
+          "description": "Asigna servicios a miembros específicos del equipo"
+        },
+        "availability": {
+          "title": "Disponibilidad inteligente",
+          "description": "Planificación avanzada con festivos y excepciones"
+        },
+        "payments": {
+          "title": "Pagos integrados",
+          "description": "Acepta depósitos y pagos completos con Stripe"
+        },
+        "notifications": {
+          "title": "Notificaciones multicanal",
+          "description": "Recordatorios por email, SMS y WhatsApp"
+        },
+        "internationalization": {
+          "title": "Soporte multilenguaje",
+          "description": "Disponible en español, inglés, alemán y más"
+        }
+      }
+    },
+    "pricing": {
+      "title": "Precios simples y transparentes",
+      "subtitle": "Empieza gratis y escala a medida que creces",
+      "plans": {
+        "trial": {
+          "name": "Prueba gratuita",
+          "price": "0€",
+          "period": "/mes",
+          "description": "Perfecto para comenzar",
+          "features": [
+            "Hasta 50 reservas al mes",
+            "Gestión básica de personal",
+            "Notificaciones por email",
+            "Soporte estándar"
+          ]
+        },
+        "pro": {
+          "name": "Profesional",
+          "price": "199€",
+          "period": "/año",
+          "description": "Para negocios en crecimiento",
+          "features": [
+            "Reservas ilimitadas",
+            "Gestión avanzada de personal",
+            "Notificaciones multicanal",
+            "Soporte prioritario",
+            "Imagen de marca personalizada"
+          ],
+          "popular": true
+        }
+      },
+      "cta": "Empezar prueba gratuita"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Iniciar sesión",
+      "subtitle": "¡Bienvenido de nuevo! Accede a tu cuenta.",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "signInButton": "Entrar",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "noAccount": "¿No tienes cuenta?",
+      "signUpLink": "Regístrate aquí"
+    },
+    "signUp": {
+      "title": "Crear cuenta",
+      "subtitle": "Comienza tu prueba gratuita.",
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "signUpButton": "Crear cuenta",
+      "hasAccount": "¿Ya tienes cuenta?",
+      "signInLink": "Inicia sesión aquí"
+    },
+    "forgotPassword": {
+      "title": "Restablecer contraseña",
+      "subtitle": "Introduce tu correo para recibir un enlace de restablecimiento.",
+      "email": "Correo electrónico",
+      "resetButton": "Enviar enlace",
+      "backToSignIn": "Volver a iniciar sesión"
+    }
+  },
+  "booking": {
+    "title": "Reservar una cita",
+    "steps": {
+      "service": "Seleccionar servicio",
+      "staff": "Elegir personal",
+      "time": "Fecha y hora",
+      "details": "Tus datos",
+      "payment": "Pago",
+      "confirmation": "Confirmación"
+    },
+    "common": {
+      "next": "Siguiente",
+      "back": "Atrás",
+      "selected": "Seleccionado",
+      "select": "Seleccionar"
+    },
+    "service": {
+      "title": "Elige un servicio",
+      "duration": "Duración",
+      "price": "Precio",
+      "deposit": "Depósito requerido",
+      "select": "Seleccionar servicio"
+    },
+    "staff": {
+      "title": "Elige a tu especialista",
+      "any": "Cualquiera disponible",
+      "select": "Seleccionar personal"
+    },
+    "time": {
+      "title": "Selecciona fecha y hora",
+      "date": "Fecha",
+      "time": "Hora",
+      "timezone": "Zona horaria",
+      "noSlots": "No hay horarios disponibles para esta fecha",
+      "loading": "Cargando horarios disponibles..."
+    },
+    "details": {
+      "title": "Tu información de contacto",
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "notes": "Notas especiales (opcional)",
+      "required": "Todos los campos son obligatorios"
+    },
+    "payment": {
+      "title": "Pago",
+      "deposit": "Depósito",
+      "full": "Pago completo",
+      "amount": "Importe",
+      "card": "Datos de la tarjeta",
+      "processing": "Procesando el pago...",
+      "secure": "Tu pago es seguro y está encriptado"
+    },
+    "confirmation": {
+      "title": "¡Reserva confirmada!",
+      "subtitle": "Te hemos enviado un correo de confirmación",
+      "details": "Detalles de la reserva",
+      "service": "Servicio",
+      "staff": "Personal",
+      "date": "Fecha",
+      "time": "Hora",
+      "total": "Total",
+      "reference": "Referencia",
+      "download": "Descargar calendario",
+      "whatsapp": "Enviar a WhatsApp"
+    }
+  },
+  "dashboard": {
+    "overview": {
+      "title": "Resumen del panel",
+      "welcome": "¡Bienvenido de nuevo!",
+      "stats": {
+        "todayBookings": "Reservas de hoy",
+        "weekBookings": "Esta semana",
+        "monthBookings": "Este mes",
+        "revenue": "Ingresos"
+      },
+      "recentBookings": "Reservas recientes",
+      "upcomingBookings": "Próximas reservas"
+    },
+    "bookings": {
+      "title": "Reservas",
+      "new": "Nueva reserva",
+      "search": "Buscar reservas...",
+      "filter": "Filtrar",
+      "status": {
+        "pending": "Pendiente",
+        "confirmed": "Confirmada",
+        "cancelled": "Cancelada",
+        "noShow": "No asistió"
+      },
+      "actions": {
+        "confirm": "Confirmar",
+        "cancel": "Cancelar",
+        "reschedule": "Reprogramar",
+        "refund": "Reembolsar"
+      }
+    },
+    "services": {
+      "title": "Servicios",
+      "new": "Nuevo servicio",
+      "name": "Nombre del servicio",
+      "description": "Descripción",
+      "duration": "Duración (minutos)",
+      "price": "Precio (€)",
+      "deposit": "Depósito (%)",
+      "buffer": "Tiempo de buffer",
+      "active": "Activo",
+      "actions": {
+        "edit": "Editar servicio",
+        "delete": "Eliminar servicio"
+      }
+    },
+    "staff": {
+      "title": "Personal",
+      "new": "Añadir miembro",
+      "name": "Nombre completo",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "avatar": "Avatar",
+      "active": "Activo",
+      "services": "Servicios asignados",
+      "actions": {
+        "edit": "Editar personal",
+        "delete": "Eliminar personal"
+      }
+    },
+    "availability": {
+      "title": "Disponibilidad",
+      "general": "Horario general",
+      "staff": "Horario del personal",
+      "exceptions": "Excepciones",
+      "holidays": "Festivos",
+      "day": "Día",
+      "start": "Hora de inicio",
+      "end": "Hora de fin",
+      "open": "Abierto",
+      "closed": "Cerrado"
+    },
+    "settings": {
+      "title": "Ajustes",
+      "organization": "Empresa",
+      "name": "Nombre de la empresa",
+      "slug": "URL de reservas",
+      "description": "Descripción",
+      "website": "Sitio web",
+      "email": "Correo de contacto",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "timezone": "Zona horaria",
+      "currency": "Moneda",
+      "tax": "Impuestos",
+      "taxEnabled": "Activar impuestos",
+      "taxRate": "Tasa (%)",
+      "notifications": "Notificaciones",
+      "emailTemplates": "Plantillas de correo",
+      "whatsapp": "Integración con WhatsApp",
+      "whatsappEnabled": "Activar WhatsApp",
+      "license": "Licencia",
+      "status": "Estado",
+      "period": "Periodo actual",
+      "renewal": "Fecha de renovación"
+    }
+  },
+  "emails": {
+    "bookingConfirm": {
+      "subject": "Reserva confirmada - {serviceName}",
+      "greeting": "Hola {customerName},",
+      "message": "¡Tu cita ha sido confirmada!",
+      "details": "Detalles de la cita:",
+      "service": "Servicio: {serviceName}",
+      "staff": "Personal: {staffName}",
+      "date": "Fecha: {date}",
+      "time": "Hora: {time}",
+      "location": "Ubicación: {address}",
+      "total": "Total: {total}",
+      "reference": "Referencia: {reference}",
+      "footer": "¡Gracias por elegirnos!",
+      "download": "Descargar calendario"
+    },
+    "bookingReminder": {
+      "subject": "Recordatorio: tu cita de mañana",
+      "greeting": "Hola {customerName},",
+      "message": "Este es un recordatorio amable de tu cita de mañana.",
+      "details": "Detalles de la cita:",
+      "service": "Servicio: {serviceName}",
+      "staff": "Personal: {staffName}",
+      "date": "Fecha: {date}",
+      "time": "Hora: {time}",
+      "location": "Ubicación: {address}",
+      "footer": "¡Te esperamos!"
+    },
+    "bookingCancelled": {
+      "subject": "Cita cancelada",
+      "greeting": "Hola {customerName},",
+      "message": "Tu cita ha sido cancelada.",
+      "details": "Cita cancelada:",
+      "service": "Servicio: {serviceName}",
+      "staff": "Personal: {staffName}",
+      "date": "Fecha: {date}",
+      "time": "Hora: {time}",
+      "refund": "Reembolso: {refundAmount}",
+      "footer": "¡Esperamos verte pronto!"
+    }
+  },
+  "errors": {
+    "generic": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "network": "Error de red. Revisa tu conexión.",
+    "validation": "Revisa tu información e inténtalo de nuevo.",
+    "unauthorized": "No estás autorizado para realizar esta acción.",
+    "notFound": "No se encontró el recurso solicitado.",
+    "booking": {
+      "slotUnavailable": "Este horario ya no está disponible.",
+      "invalidTime": "Selecciona un horario válido.",
+      "paymentFailed": "El pago ha fallado. Inténtalo de nuevo.",
+      "bookingNotFound": "Reserva no encontrada."
+    },
+    "auth": {
+      "invalidCredentials": "Correo o contraseña inválidos.",
+      "emailExists": "Ya existe una cuenta con este correo.",
+      "weakPassword": "La contraseña debe tener al menos 8 caracteres.",
+      "emailRequired": "El correo es obligatorio.",
+      "passwordRequired": "La contraseña es obligatoria."
+    }
+  },
+
+  "booking_loading": "Cargando...",
+  "booking_error": "Ha ocurrido un error",
+  "booking_submit": "Reservar cita",
+  "booking_payment": "Pago",
+  "booking_summary": "Resumen de la reserva",
+  "booking_service": "Servicio",
+  "booking_staff": "Personal",
+  "booking_date": "Fecha",
+  "booking_time": "Hora",
+  "booking_total": "Importe total",
+  "booking_pay_with_stripe": "Pagar con Stripe",
+  "booking_complete": "Confirmar reserva"
+}

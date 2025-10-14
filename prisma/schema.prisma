@@ -1,0 +1,384 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
+}
+
+// ===========================
+// NextAuth v5 – erforderliche Modelle
+// ===========================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+  password      String? // für Credentials-Login (gehasht)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations (dein System)
+  memberships Membership[]
+  auditLogs   AuditLog[]
+
+  // NextAuth Relations
+  accounts Account[]
+  sessions Session[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ===========================
+// Dein Domänenmodell
+// ===========================
+
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  website     String?
+  email       String?
+  phone       String?
+  address     String?
+  timezone    String   @default("UTC")
+  currency    String   @default("EUR")
+  taxEnabled  Boolean  @default(false)
+  taxRate     Float    @default(0.0)
+  logo        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  memberships  Membership[]
+  services     Service[]
+  staff        Staff[]
+  openingHours OpeningHours[]
+  holidays     Holiday[]
+  bookings     Booking[]
+  licenses     License[]
+  auditLogs    AuditLog[]
+  apiKeys      ApiKey[]
+
+  @@map("organizations")
+}
+
+model Membership {
+  id     String @id @default(cuid())
+  role   Role   @default(STAFF)
+  userId String
+  orgId  String
+
+  // Relations
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, orgId])
+  @@map("memberships")
+}
+
+model Service {
+  id           String   @id @default(cuid())
+  name         String
+  description  String?
+  duration     Int
+  price        Float
+  depositPct   Float    @default(0.0)
+  bufferBefore Int      @default(0)
+  bufferAfter  Int      @default(0)
+  isActive     Boolean  @default(true)
+  orgId        String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  organization  Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  staffServices StaffService[]
+  bookings      Booking[]
+
+  @@map("services")
+}
+
+model Staff {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  phone     String?
+  avatar    String?
+  isActive  Boolean  @default(true)
+  orgId     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  organization  Organization     @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  staffServices StaffService[]
+  openingHours  OpeningHours[]
+  exceptions    StaffException[]
+  bookings      Booking[]
+
+  @@map("staff")
+}
+
+model StaffService {
+  id        String @id @default(cuid())
+  staffId   String
+  serviceId String
+
+  // Relations
+  staff   Staff   @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, serviceId])
+  @@map("staff_services")
+}
+
+model OpeningHours {
+  id        String  @id @default(cuid())
+  dayOfWeek Int
+  startTime String
+  endTime   String
+  isOpen    Boolean @default(true)
+  orgId     String?
+  staffId   String?
+
+  // Relations
+  organization Organization? @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  staff        Staff?        @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@map("opening_hours")
+}
+
+model StaffException {
+  id          String   @id @default(cuid())
+  staffId     String
+  startDate   DateTime
+  endDate     DateTime
+  isAvailable Boolean  @default(false)
+  reason      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@map("staff_exceptions")
+}
+
+model Holiday {
+  id        String   @id @default(cuid())
+  name      String
+  startDate DateTime
+  endDate   DateTime
+  orgId     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@map("holidays")
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  orgId         String
+  serviceId     String
+  staffId       String?
+  customerName  String
+  customerEmail String
+  customerPhone String?
+  timezone      String
+  startTime     DateTime
+  endTime       DateTime
+  status        BookingStatus @default(PENDING)
+  notes         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relations
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  service      Service      @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  staff        Staff?       @relation(fields: [staffId], references: [id], onDelete: SetNull)
+  payments     Payment[]
+  reminders    Reminder[]
+
+  @@index([orgId])
+  @@index([staffId])
+  @@index([startTime, endTime])
+  @@map("bookings")
+}
+
+model Payment {
+  id                    String        @id @default(cuid())
+  bookingId             String
+  stripePaymentIntentId String?
+  stripeSessionId       String?
+  amount                Float
+  currency              String        @default("EUR")
+  status                PaymentStatus @default(PENDING)
+  isDeposit             Boolean       @default(false)
+  refundedAmount        Float         @default(0.0)
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  // Relations
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+model Reminder {
+  id         String          @id @default(cuid())
+  bookingId  String
+  channel    ReminderChannel
+  whenUtc    DateTime
+  lastRunUtc DateTime?
+  state      ReminderState   @default(PENDING)
+  message    String?
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+
+  // Relations
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("reminders")
+}
+
+model ApiKey {
+  id        String   @id @default(cuid())
+  name      String
+  key       String   @unique
+  orgId     String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@map("api_keys")
+}
+
+model License {
+  id                   String        @id @default(cuid())
+  orgId                String
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  currentPeriodEnd     DateTime?
+  status               LicenseStatus @default(TRIAL)
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  // Relations
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@map("licenses")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  entity    String
+  entityId  String
+  userId    String?
+  orgId     String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  // Relations
+  user         User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  organization Organization? @relation(fields: [orgId], references: [id], onDelete: SetNull)
+
+  @@index([orgId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+// ===== Enums =====
+
+enum Role {
+  OWNER
+  ADMIN
+  STAFF
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+  PARTIALLY_REFUNDED
+}
+
+enum ReminderChannel {
+  EMAIL
+  SMS
+  WHATSAPP
+}
+
+enum ReminderState {
+  PENDING
+  SENT
+  FAILED
+  CANCELLED
+}
+
+enum LicenseStatus {
+  TRIAL
+  ACTIVE
+  CANCELLED
+  PAST_DUE
+}

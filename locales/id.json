@@ -1,0 +1,28 @@
+{
+  "common": {
+    "loading": "Memuat...",
+    "error": "Kesalahan",
+    "success": "Berhasil",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "delete": "Hapus",
+    "edit": "Edit",
+    "create": "Buat",
+    "back": "Kembali",
+    "next": "Selanjutnya",
+    "previous": "Sebelumnya",
+    "confirm": "Konfirmasi",
+    "close": "Tutup",
+    "search": "Cari",
+    "filter": "Filter",
+    "clear": "Bersihkan",
+    "select": "Pilih",
+    "required": "Wajib",
+    "optional": "Opsional",
+    "yes": "Ya",
+    "no": "Tidak",
+    "today": "Hari ini",
+    "tomorrow": "Besok",
+    "yesterday": "Kemarin"
+  }
+}

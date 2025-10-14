@@ -1,0 +1,382 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "confirm": "Confirm",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "select": "Select",
+    "required": "Required",
+    "optional": "Optional",
+    "yes": "Yes",
+    "no": "No",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "yesterday": "Yesterday"
+  },
+  "navigation": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "bookings": "Bookings",
+    "services": "Services",
+    "staff": "Staff",
+    "availability": "Availability",
+    "settings": "Settings",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out"
+  },
+  "marketing": {
+    "hero": {
+      "title": "Professional Appointment Booking for Your Business",
+      "subtitle": "Streamline your scheduling with our comprehensive booking system. Perfect for salons, clinics, studios, and service businesses.",
+      "cta": "Start Free Trial",
+      "demo": "View Demo"
+    },
+    "features": {
+      "title": "Everything You Need to Manage Bookings",
+      "subtitle": "Powerful features designed for service businesses",
+      "items": {
+        "multiTenant": {
+          "title": "Multi-Tenant Architecture",
+          "description": "Each business gets their own branded booking page"
+        },
+        "staffManagement": {
+          "title": "Staff Management",
+          "description": "Assign services to specific staff members"
+        },
+        "availability": {
+          "title": "Smart Availability",
+          "description": "Complex scheduling with holidays and exceptions"
+        },
+        "payments": {
+          "title": "Integrated Payments",
+          "description": "Accept deposits and full payments via Stripe"
+        },
+        "notifications": {
+          "title": "Multi-Channel Notifications",
+          "description": "Email, SMS, and WhatsApp reminders"
+        },
+        "internationalization": {
+          "title": "Multi-Language Support",
+          "description": "Available in English, German, Spanish and more"
+        }
+      }
+    },
+    "pricing": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Start free, scale as you grow",
+      "plans": {
+        "trial": {
+          "name": "Free Trial",
+          "price": "€0",
+          "period": "/month",
+          "description": "Perfect for getting started",
+          "features": [
+            "Up to 50 bookings per month",
+            "Basic staff management",
+            "Email notifications",
+            "Standard support"
+          ]
+        },
+        "pro": {
+          "name": "Professional",
+          "price": "€199",
+          "period": "/year",
+          "description": "For growing businesses",
+          "features": [
+            "Unlimited bookings",
+            "Advanced staff management",
+            "Multi-channel notifications",
+            "Priority support",
+            "Custom branding"
+          ],
+          "popular": true
+        }
+      },
+      "cta": "Start Free Trial"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign In",
+      "subtitle": "Welcome back! Please sign in to your account.",
+      "email": "Email",
+      "password": "Password",
+      "signInButton": "Sign In",
+      "forgotPassword": "Forgot your password?",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up here"
+    },
+    "signUp": {
+      "title": "Create Account",
+      "subtitle": "Get started with your free trial.",
+      "name": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "signUpButton": "Create Account",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign in here"
+    },
+    "forgotPassword": {
+      "title": "Reset Password",
+      "subtitle": "Enter your email to receive a reset link.",
+      "email": "Email",
+      "resetButton": "Send Reset Link",
+      "backToSignIn": "Back to Sign In"
+    }
+  },
+  "booking": {
+    "title": "Book an Appointment",
+    "steps": {
+      "service": "Select Service",
+      "staff": "Choose Staff",
+      "time": "Pick Date & Time",
+      "details": "Your Details",
+      "payment": "Payment",
+      "confirmation": "Confirmation"
+    },
+    "common": {
+      "next": "Next",
+      "back": "Back",
+      "selected": "Selected",
+      "select": "Select"
+    },
+    "service": {
+      "title": "Choose a Service",
+      "duration": "Duration",
+      "price": "Price",
+      "deposit": "Deposit Required",
+      "select": "Select Service"
+    },
+    "staff": {
+      "title": "Choose Your Staff Member",
+      "any": "Any Available",
+      "select": "Select Staff"
+    },
+    "time": {
+      "title": "Select Date & Time",
+      "date": "Date",
+      "time": "Time",
+      "timezone": "Timezone",
+      "noSlots": "No available slots for this date",
+      "loading": "Loading available times..."
+    },
+    "details": {
+      "title": "Your Contact Information",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "notes": "Special Requests (Optional)",
+      "required": "All fields are required"
+    },
+    "payment": {
+      "title": "Payment",
+      "deposit": "Deposit",
+      "full": "Full Payment",
+      "amount": "Amount",
+      "card": "Card Details",
+      "processing": "Processing payment...",
+      "secure": "Your payment is secure and encrypted"
+    },
+    "confirmation": {
+      "title": "Booking Confirmed!",
+      "subtitle": "We've sent you a confirmation email",
+      "details": "Booking Details",
+      "service": "Service",
+      "staff": "Staff",
+      "date": "Date",
+      "time": "Time",
+      "total": "Total",
+      "reference": "Reference",
+      "download": "Download Calendar",
+      "whatsapp": "Send to WhatsApp"
+    }
+  },
+  "dashboard": {
+    "overview": {
+      "title": "Dashboard Overview",
+      "welcome": "Welcome back!",
+      "stats": {
+        "todayBookings": "Today's Bookings",
+        "weekBookings": "This Week",
+        "monthBookings": "This Month",
+        "revenue": "Revenue"
+      },
+      "recentBookings": "Recent Bookings",
+      "upcomingBookings": "Upcoming Bookings"
+    },
+    "bookings": {
+      "title": "Bookings",
+      "new": "New Booking",
+      "search": "Search bookings...",
+      "filter": "Filter",
+      "status": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "cancelled": "Cancelled",
+        "noShow": "No Show"
+      },
+      "actions": {
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "reschedule": "Reschedule",
+        "refund": "Refund"
+      }
+    },
+    "services": {
+      "title": "Services",
+      "new": "New Service",
+      "name": "Service Name",
+      "description": "Description",
+      "duration": "Duration (minutes)",
+      "price": "Price (€)",
+      "deposit": "Deposit (%)",
+      "buffer": "Buffer Time",
+      "active": "Active",
+      "actions": {
+        "edit": "Edit Service",
+        "delete": "Delete Service"
+      }
+    },
+    "staff": {
+      "title": "Staff",
+      "new": "Add Staff Member",
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "avatar": "Avatar",
+      "active": "Active",
+      "services": "Assigned Services",
+      "actions": {
+        "edit": "Edit Staff",
+        "delete": "Remove Staff"
+      }
+    },
+    "availability": {
+      "title": "Availability",
+      "general": "General Hours",
+      "staff": "Staff Hours",
+      "exceptions": "Exceptions",
+      "holidays": "Holidays",
+      "day": "Day",
+      "start": "Start Time",
+      "end": "End Time",
+      "open": "Open",
+      "closed": "Closed"
+    },
+    "settings": {
+      "title": "Settings",
+      "organization": "Organization",
+      "name": "Business Name",
+      "slug": "Booking URL",
+      "description": "Description",
+      "website": "Website",
+      "email": "Contact Email",
+      "phone": "Phone",
+      "address": "Address",
+      "timezone": "Timezone",
+      "currency": "Currency",
+      "tax": "Tax Settings",
+      "taxEnabled": "Enable Tax",
+      "taxRate": "Tax Rate (%)",
+      "notifications": "Notifications",
+      "emailTemplates": "Email Templates",
+      "whatsapp": "WhatsApp Integration",
+      "whatsappEnabled": "Enable WhatsApp",
+      "license": "License",
+      "status": "Status",
+      "period": "Current Period",
+      "renewal": "Renewal Date"
+    }
+  },
+  "emails": {
+    "bookingConfirm": {
+      "subject": "Booking Confirmed - {serviceName}",
+      "greeting": "Hello {customerName},",
+      "message": "Your appointment has been confirmed!",
+      "details": "Appointment Details:",
+      "service": "Service: {serviceName}",
+      "staff": "Staff: {staffName}",
+      "date": "Date: {date}",
+      "time": "Time: {time}",
+      "location": "Location: {address}",
+      "total": "Total: {total}",
+      "reference": "Reference: {reference}",
+      "footer": "Thank you for choosing us!",
+      "download": "Download Calendar"
+    },
+    "bookingReminder": {
+      "subject": "Reminder: Your appointment tomorrow",
+      "greeting": "Hello {customerName},",
+      "message": "This is a friendly reminder about your appointment tomorrow.",
+      "details": "Appointment Details:",
+      "service": "Service: {serviceName}",
+      "staff": "Staff: {staffName}",
+      "date": "Date: {date}",
+      "time": "Time: {time}",
+      "location": "Location: {address}",
+      "footer": "We look forward to seeing you!"
+    },
+    "bookingCancelled": {
+      "subject": "Appointment Cancelled",
+      "greeting": "Hello {customerName},",
+      "message": "Your appointment has been cancelled.",
+      "details": "Cancelled Appointment:",
+      "service": "Service: {serviceName}",
+      "staff": "Staff: {staffName}",
+      "date": "Date: {date}",
+      "time": "Time: {time}",
+      "refund": "Refund: {refundAmount}",
+      "footer": "We hope to see you again soon!"
+    }
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Network error. Please check your connection.",
+    "validation": "Please check your input and try again.",
+    "unauthorized": "You are not authorized to perform this action.",
+    "notFound": "The requested resource was not found.",
+    "booking": {
+      "slotUnavailable": "This time slot is no longer available.",
+      "invalidTime": "Please select a valid time slot.",
+      "paymentFailed": "Payment failed. Please try again.",
+      "bookingNotFound": "Booking not found."
+    },
+    "auth": {
+      "invalidCredentials": "Invalid email or password.",
+      "emailExists": "An account with this email already exists.",
+      "weakPassword": "Password must be at least 8 characters long.",
+      "emailRequired": "Email is required.",
+      "passwordRequired": "Password is required."
+    }
+  },
+
+  "booking_loading": "Loading...",
+  "booking_error": "An error occurred",
+  "booking_submit": "Book appointment",
+  "booking_payment": "Payment",
+  "booking_summary": "Booking Summary",
+  "booking_service": "Service",
+  "booking_staff": "Staff",
+  "booking_date": "Date",
+  "booking_time": "Time",
+  "booking_total": "Total amount",
+  "booking_pay_with_stripe": "Pay with Stripe",
+  "booking_complete": "Complete booking"
+}

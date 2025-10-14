@@ -1,0 +1,393 @@
+{
+  "common": {
+    "loading": "Lädt...",
+    "error": "Fehler",
+    "success": "Erfolgreich",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "confirm": "Bestätigen",
+    "close": "Schließen",
+    "search": "Suchen",
+    "filter": "Filter",
+    "clear": "Löschen",
+    "select": "Auswählen",
+    "required": "Erforderlich",
+    "optional": "Optional",
+    "yes": "Ja",
+    "no": "Nein",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "yesterday": "Gestern"
+  },
+
+  "navigation": {
+    "home": "Startseite",
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "contact": "Kontakt",
+    "dashboard": "Dashboard",
+    "bookings": "Termine",
+    "services": "Leistungen",
+    "staff": "Mitarbeiter",
+    "availability": "Verfügbarkeit",
+    "settings": "Einstellungen",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "signOut": "Abmelden"
+  },
+
+  "marketing": {
+    "hero": {
+      "title": "Professionelle Terminbuchung für Ihr Unternehmen",
+      "subtitle": "Optimieren Sie Ihre Terminplanung mit unserem umfassenden Buchungssystem. Perfekt für Salons, Kliniken, Studios und Dienstleistungsunternehmen.",
+      "cta": "Kostenlose Testversion starten",
+      "demo": "Demo ansehen"
+    },
+    "features": {
+      "title": "Alles was Sie für die Terminverwaltung brauchen",
+      "subtitle": "Leistungsstarke Funktionen für Dienstleistungsunternehmen",
+      "items": {
+        "multiTenant": {
+          "title": "Multi-Tenant-Architektur",
+          "description": "Jedes Unternehmen erhält seine eigene markenbasierte Buchungsseite"
+        },
+        "staffManagement": {
+          "title": "Mitarbeiterverwaltung",
+          "description": "Weisen Sie Leistungen bestimmten Mitarbeitern zu"
+        },
+        "availability": {
+          "title": "Intelligente Verfügbarkeit",
+          "description": "Komplexe Terminplanung mit Feiertagen und Ausnahmen"
+        },
+        "payments": {
+          "title": "Integrierte Zahlungen",
+          "description": "Akzeptieren Sie Anzahlungen und vollständige Zahlungen über Stripe"
+        },
+        "notifications": {
+          "title": "Multi-Channel-Benachrichtigungen",
+          "description": "E-Mail-, SMS- und WhatsApp-Erinnerungen"
+        },
+        "internationalization": {
+          "title": "Mehrsprachige Unterstützung",
+          "description": "Verfügbar auf Deutsch, Englisch, Spanisch und mehr"
+        }
+      }
+    },
+    "pricing": {
+      "title": "Einfache, transparente Preise",
+      "subtitle": "Kostenlos starten, mit dem Wachstum skalieren",
+      "plans": {
+        "trial": {
+          "name": "Kostenlose Testversion",
+          "price": "0€",
+          "period": "/Monat",
+          "description": "Perfekt für den Einstieg",
+          "features": [
+            "Bis zu 50 Termine pro Monat",
+            "Grundlegende Mitarbeiterverwaltung",
+            "E-Mail-Benachrichtigungen",
+            "Standard-Support"
+          ]
+        },
+        "pro": {
+          "name": "Professional",
+          "price": "199€",
+          "period": "/Jahr",
+          "description": "Für wachsende Unternehmen",
+          "features": [
+            "Unbegrenzte Termine",
+            "Erweiterte Mitarbeiterverwaltung",
+            "Multi-Channel-Benachrichtigungen",
+            "Prioritäts-Support",
+            "Individuelle Markenführung"
+          ],
+          "popular": true
+        }
+      },
+      "cta": "Kostenlose Testversion starten"
+    }
+  },
+
+  "auth": {
+    "signIn": {
+      "title": "Anmelden",
+      "subtitle": "Willkommen zurück! Bitte melden Sie sich in Ihrem Konto an.",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "signInButton": "Anmelden",
+      "forgotPassword": "Passwort vergessen?",
+      "noAccount": "Noch kein Konto?",
+      "signUpLink": "Hier registrieren"
+    },
+    "signUp": {
+      "title": "Konto erstellen",
+      "subtitle": "Beginnen Sie mit Ihrer kostenlosen Testversion.",
+      "name": "Vollständiger Name",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "signUpButton": "Konto erstellen",
+      "hasAccount": "Bereits ein Konto?",
+      "signInLink": "Hier anmelden"
+    },
+    "forgotPassword": {
+      "title": "Passwort zurücksetzen",
+      "subtitle": "Geben Sie Ihre E-Mail ein, um einen Reset-Link zu erhalten.",
+      "email": "E-Mail",
+      "resetButton": "Reset-Link senden",
+      "backToSignIn": "Zurück zur Anmeldung"
+    }
+  },
+
+  "booking": {
+    "loading": "Laden...",
+    "error": "Ein Fehler ist aufgetreten",
+    "payWithStripe": "Mit Stripe bezahlen",
+
+    "title": "Termin buchen",
+    "steps": {
+      "service": "Leistung wählen",
+      "staff": "Mitarbeiter wählen",
+      "time": "Datum & Uhrzeit",
+      "details": "Ihre Daten",
+      "payment": "Zahlung",
+      "confirmation": "Bestätigung"
+    },
+    "common": {
+      "next": "Weiter",
+      "back": "Zurück",
+      "selected": "Ausgewählt",
+      "select": "Auswählen"
+    },
+    "service": {
+      "title": "Wählen Sie eine Leistung",
+      "duration": "Dauer",
+      "price": "Preis",
+      "deposit": "Anzahlung erforderlich",
+      "select": "Leistung auswählen"
+    },
+    "staff": {
+      "title": "Wählen Sie Ihren Mitarbeiter",
+      "any": "Beliebiger verfügbarer",
+      "select": "Mitarbeiter auswählen"
+    },
+    "time": {
+      "title": "Datum & Uhrzeit wählen",
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "timezone": "Zeitzone",
+      "noSlots": "Keine verfügbaren Termine für dieses Datum",
+      "loading": "Verfügbare Zeiten werden geladen..."
+    },
+    "details": {
+      "title": "Ihre Kontaktdaten",
+      "name": "Vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefonnummer",
+      "notes": "Besondere Wünsche (Optional)",
+      "required": "Alle Felder sind erforderlich"
+    },
+    "payment": {
+      "title": "Zahlung",
+      "deposit": "Anzahlung",
+      "full": "Vollzahlung",
+      "amount": "Betrag",
+      "card": "Kartendetails",
+      "processing": "Zahlung wird verarbeitet...",
+      "secure": "Ihre Zahlung ist sicher und verschlüsselt"
+    },
+    "confirmation": {
+      "title": "Termin bestätigt!",
+      "subtitle": "Wir haben Ihnen eine Bestätigungs-E-Mail gesendet",
+      "details": "Termindetails",
+      "service": "Leistung",
+      "staff": "Mitarbeiter",
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "total": "Gesamt",
+      "reference": "Referenz",
+      "download": "Kalender herunterladen",
+      "whatsapp": "An WhatsApp senden"
+    }
+  },
+
+  "dashboard": {
+    "overview": {
+      "title": "Dashboard-Übersicht",
+      "welcome": "Willkommen zurück!",
+      "stats": {
+        "todayBookings": "Heutige Termine",
+        "weekBookings": "Diese Woche",
+        "monthBookings": "Diesen Monat",
+        "revenue": "Umsatz"
+      },
+      "recentBookings": "Aktuelle Termine",
+      "upcomingBookings": "Anstehende Termine"
+    },
+    "bookings": {
+      "title": "Termine",
+      "new": "Neuer Termin",
+      "search": "Termine suchen...",
+      "filter": "Filter",
+      "status": {
+        "pending": "Ausstehend",
+        "confirmed": "Bestätigt",
+        "cancelled": "Storniert",
+        "noShow": "Nicht erschienen"
+      },
+      "actions": {
+        "confirm": "Bestätigen",
+        "cancel": "Stornieren",
+        "reschedule": "Verschieben",
+        "refund": "Erstatten"
+      }
+    },
+    "services": {
+      "title": "Leistungen",
+      "new": "Neue Leistung",
+      "name": "Leistungsname",
+      "description": "Beschreibung",
+      "duration": "Dauer (Minuten)",
+      "price": "Preis (€)",
+      "deposit": "Anzahlung (%)",
+      "buffer": "Pufferzeit",
+      "active": "Aktiv",
+      "actions": {
+        "edit": "Leistung bearbeiten",
+        "delete": "Leistung löschen"
+      }
+    },
+    "staff": {
+      "title": "Mitarbeiter",
+      "new": "Mitarbeiter hinzufügen",
+      "name": "Vollständiger Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "avatar": "Avatar",
+      "active": "Aktiv",
+      "services": "Zugewiesene Leistungen",
+      "actions": {
+        "edit": "Mitarbeiter bearbeiten",
+        "delete": "Mitarbeiter entfernen"
+      }
+    },
+    "availability": {
+      "title": "Verfügbarkeit",
+      "general": "Allgemeine Zeiten",
+      "staff": "Mitarbeiterzeiten",
+      "exceptions": "Ausnahmen",
+      "holidays": "Feiertage",
+      "day": "Tag",
+      "start": "Startzeit",
+      "end": "Endzeit",
+      "open": "Geöffnet",
+      "closed": "Geschlossen"
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "organization": "Unternehmen",
+      "name": "Firmenname",
+      "slug": "Buchungs-URL",
+      "description": "Beschreibung",
+      "website": "Website",
+      "email": "Kontakt-E-Mail",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "timezone": "Zeitzone",
+      "currency": "Währung",
+      "tax": "Steuereinstellungen",
+      "taxEnabled": "Steuern aktivieren",
+      "taxRate": "Steuersatz (%)",
+      "notifications": "Benachrichtigungen",
+      "emailTemplates": "E-Mail-Vorlagen",
+      "whatsapp": "WhatsApp-Integration",
+      "whatsappEnabled": "WhatsApp aktivieren",
+      "license": "Lizenz",
+      "status": "Status",
+      "period": "Aktueller Zeitraum",
+      "renewal": "Verlängerungsdatum"
+    }
+  },
+
+  "emails": {
+    "bookingConfirm": {
+      "subject": "Termin bestätigt - {serviceName}",
+      "greeting": "Hallo {customerName},",
+      "message": "Ihr Termin wurde bestätigt!",
+      "details": "Termindetails:",
+      "service": "Leistung: {serviceName}",
+      "staff": "Mitarbeiter: {staffName}",
+      "date": "Datum: {date}",
+      "time": "Uhrzeit: {time}",
+      "location": "Standort: {address}",
+      "total": "Gesamt: {total}",
+      "reference": "Referenz: {reference}",
+      "footer": "Vielen Dank für Ihre Wahl!",
+      "download": "Kalender herunterladen"
+    },
+    "bookingReminder": {
+      "subject": "Erinnerung: Ihr Termin morgen",
+      "greeting": "Hallo {customerName},",
+      "message": "Dies ist eine freundliche Erinnerung an Ihren Termin morgen.",
+      "details": "Termindetails:",
+      "service": "Leistung: {serviceName}",
+      "staff": "Mitarbeiter: {staffName}",
+      "date": "Datum: {date}",
+      "time": "Uhrzeit: {time}",
+      "location": "Standort: {address}",
+      "footer": "Wir freuen uns auf Sie!"
+    },
+    "bookingCancelled": {
+      "subject": "Termin storniert",
+      "greeting": "Hallo {customerName},",
+      "message": "Ihr Termin wurde storniert.",
+      "details": "Stornierter Termin:",
+      "service": "Leistung: {serviceName}",
+      "staff": "Mitarbeiter: {staffName}",
+      "date": "Datum: {date}",
+      "time": "Uhrzeit: {time}",
+      "refund": "Erstattung: {refundAmount}",
+      "footer": "Wir hoffen, Sie bald wieder zu sehen!"
+    }
+  },
+
+  "errors": {
+    "generic": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+    "network": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+    "validation": "Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut.",
+    "unauthorized": "Sie sind nicht berechtigt, diese Aktion auszuführen.",
+    "notFound": "Die angeforderte Ressource wurde nicht gefunden.",
+    "booking": {
+      "slotUnavailable": "Dieser Termin ist nicht mehr verfügbar.",
+      "invalidTime": "Bitte wählen Sie einen gültigen Termin.",
+      "paymentFailed": "Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "bookingNotFound": "Termin nicht gefunden."
+    },
+    "auth": {
+      "invalidCredentials": "Ungültige E-Mail oder Passwort.",
+      "emailExists": "Ein Konto mit dieser E-Mail existiert bereits.",
+      "weakPassword": "Passwort muss mindestens 8 Zeichen lang sein.",
+      "emailRequired": "E-Mail ist erforderlich.",
+      "passwordRequired": "Passwort ist erforderlich."
+    }
+  },
+
+  "booking_loading": "Laden...",
+  "booking_error": "Ein Fehler ist aufgetreten",
+  "booking_submit": "Termin buchen",
+  "booking_payment": "Zahlung",
+  "booking_summary": "Buchungsübersicht",
+  "booking_service": "Leistung",
+  "booking_staff": "Mitarbeiter",
+  "booking_date": "Datum",
+  "booking_time": "Uhrzeit",
+  "booking_total": "Gesamtbetrag",
+  "booking_pay_with_stripe": "Mit Stripe bezahlen",
+  "booking_complete": "Buchung abschließen"
+}
