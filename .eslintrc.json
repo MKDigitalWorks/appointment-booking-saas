@@ -1,21 +1,28 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "@typescript-eslint/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
-  "rules": {
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-non-null-assertion": "warn"
-  },
+  "root": true,
+  "extends": ["next/core-web-vitals"],
   "ignorePatterns": [
     "node_modules/",
     ".next/",
-    "out/",
-    "dist/"
+    "playwright-report/",
+    "test-results/",
+    "blob-report/",
+    "dist/",
+    "coverage/"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+      "rules": {
+        // Du kannst hier bei Bedarf später Regeln ergänzen
+      }
+    },
+    {
+      "files": ["tests/**/*", "**/*.spec.ts", "**/*.spec.tsx"],
+      "rules": {
+        // Tests etwas lockerer halten
+        "@next/next/no-html-link-for-pages": "off"
+      }
+    }
   ]
 }
