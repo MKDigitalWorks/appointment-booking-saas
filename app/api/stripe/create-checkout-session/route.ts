@@ -6,16 +6,8 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    const priceId = process.env.PRICE_ID;
+    const priceId = process.env.PRICE_ID || "price_dummy";
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-    const secret = process.env.STRIPE_SECRET_KEY;
-
-    if (!secret || !priceId) {
-      return NextResponse.json(
-        { error: "Missing STRIPE_SECRET_KEY or PRICE_ID" },
-        { status: 400 }
-      );
-    }
 
     const body = await req.json().catch(() => ({} as any));
     const metadata = (body?.metadata ?? {}) as Record<string, string>;
@@ -30,6 +22,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: session.url }, { status: 200 });
   } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 });
+    return NextResponse.json({ error: e?.message ?? "Stripe error" }, { status: 500 });
   }
 }

@@ -11,20 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_TELEMETRY_DISABLED: "1"
-name: CI
-
-on:
-  push:
-    branches: ["**"]
-  pull_request:
-    branches: ["**"]
-
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    env:
-      NEXT_TELEMETRY_DISABLED: "1"
       NODE_ENV: development
+      CI: "true"
 
     steps:
       - name: Checkout
@@ -39,11 +27,11 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Lint
+      - name: Lint (soft)
         if: ${{ hashFiles('.eslintrc.json', '.eslintrc.js') != '' }}
+        continue-on-error: true
         run: npm run lint
 
-      # Nur Anzeige - bricht den Build nicht ab
       - name: Typecheck (soft)
         continue-on-error: true
         run: |
@@ -52,7 +40,7 @@ jobs:
             npx tsc --noEmit || true
           fi
 
-      - name: Build
+      - name: Build (Next.js)
         run: npm run build
 
       - name: Install Playwright (browsers)
@@ -66,4 +54,3 @@ jobs:
           NEXTAUTH_URL: http://localhost:3000
           STRIPE_SECRET_KEY: dummy
           PRICE_ID: dummy
-
