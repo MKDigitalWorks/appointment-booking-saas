@@ -24,15 +24,13 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
-      # ---- LINT ----
       - name: Lint
         if: ${{ hashFiles('.eslintrc.json', '.eslintrc.js') != '' }}
         run: npm run lint
 
-      # ---- TYPECHECK (soft-fail) ----
-      - name: Typecheck
+      - name: Typecheck (soft)
         continue-on-error: true
         run: |
           if [ -f "tsconfig.json" ]; then
@@ -40,7 +38,6 @@ jobs:
             npx tsc --noEmit || true
           fi
 
-      # ---- PLAYWRIGHT (smoke) ----
       - name: Install Playwright (browsers)
         run: npx playwright install --with-deps
 
@@ -54,6 +51,5 @@ jobs:
           STRIPE_SECRET_KEY: dummy
           PRICE_ID: dummy
 
-      # ---- BUILD ----
       - name: Build
         run: npm run build
