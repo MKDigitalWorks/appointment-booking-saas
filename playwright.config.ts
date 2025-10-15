@@ -9,20 +9,9 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || "http://localhost:3000",
     trace: "on-first-retry",
   },
-  projects: [
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
-  ],
-  // Der Server wird im CI vor den E2E-Tests per "next build && next start" gestartet.
-  // Falls lokal: Playwright startet den Server mit dem folgenden Kommando.
+  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  // lokal startet PW den Dev-Server; in CI bauen wir vorher (siehe Workflow)
   webServer: process.env.CI
     ? undefined
-    : {
-        command: "npm run dev",
-        url: "http://localhost:3000",
-        reuseExistingServer: true,
-        timeout: 120_000,
-      },
+    : { command: "npm run dev", url: "http://localhost:3000", reuseExistingServer: true, timeout: 120_000 },
 });

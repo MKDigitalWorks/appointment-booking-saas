@@ -1,55 +1,37 @@
 // app/api/stripe/create-checkout-session/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-import { createCheckoutSession } from "@/lib/stripe";
-import { prisma } from "@/lib/prisma";
-import { formatCents } from "@/lib/price";
+import stripe from "@/lib/stripe";
 
-const Schema = z.object({
-  bookingId: z.string().min(1),
-  amount: z.number().int().positive(),
-});
+export const runtime = "nodejs"; // Stripe benötigt Node (nicht Edge)
+export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json().catch(() => null);
-    if (!body) return NextResponse.json({ ok: false, error: "Missing body" }, { status: 400 });
+    const priceId = process.env.PRICE_ID;
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    const secret = process.env.STRIPE_SECRET_KEY;
 
-    const parsed = Schema.safeParse(body);
-    if (!parsed.success) {
-      return NextResponse.json({ ok: false, error: "Invalid payload", issues: parsed.error.flatten() }, { status: 400 });
+    if (!secret || !priceId) {
+      return NextResponse.json(
+        { error: "Missing STRIPE_SECRET_KEY or PRICE_ID" },
+        { status: 400 }
+      );
     }
 
-    const { bookingId, amount } = parsed.data;
-    const booking = await prisma.booking.findUnique({
-      where: { id: bookingId },
-      include: { organization: true, service: true },
-    });
-    if (!booking) return NextResponse.json({ ok: false, error: "Booking not found" }, { status: 404 });
-    if (booking.status !== "pending")
-      return NextResponse.json({ ok: false, error: "Booking not in pending state" }, { status: 409 });
+    // Optional: Metadaten aus Body akzeptieren (z. B. bookingId)
+    const body = await req.json().catch(() => ({} as any));
+    const metadata = (body?.metadata ?? {}) as Record<string, string>;
 
-    const orgSlug = booking.organization.slug || "organization";
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") || "http://localhost:3000";
-    const successUrl = `${appUrl}/en/${orgSlug}/confirmation?bookingId=${booking.id}`;
-    const cancelUrl = `${appUrl}/en/${orgSlug}`;
-
-    const session = await createCheckoutSession({
-      bookingId: booking.id,
-      orgId: booking.orgId,
-      orgSlug,
-      serviceId: booking.serviceId,
-      amountCents: amount,
-      currency: booking.currency || booking.organization.currency || "EUR",
-      successUrl,
-      cancelUrl,
-      tax: process.env.STRIPE_TAX_ENABLED === "true",
-      description: `Booking ${booking.service.name} (${formatCents(amount, booking.currency)})`,
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: [{ price: priceId, quantity: 1 }],
+      success_url: `${appUrl}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${appUrl}/checkout-cancelled`,
+      metadata,
     });
 
-    return NextResponse.json({ ok: true, checkoutUrl: session.url });
-  } catch (err: any) {
-    console.error("[/api/stripe/create-checkout-session] Error:", err?.message || err);
-    return NextResponse.json({ ok: false, error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json({ url: session.url }, { status: 200 });
+  } catch (e: any) {
+    return NextResponse.json({ error: e.message }, { status: 500 });
   }
 }
