@@ -1,39 +1,28 @@
-import { defineConfig, devices } from '@playwright/test';
-
-const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
-const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: 'tests',
+  testDir: "tests/e2e",
+  testMatch: ["**/*.spec.ts"],
   fullyParallel: true,
-  retries: process.env.CI ? 1 : 0,
-  timeout: 30_000,
-  reporter: [['list']],
+  retries: 0,
   use: {
-    baseURL: BASE_URL,
-    trace: 'retain-on-failure',
-    video: 'retain-on-failure',
-    screenshot: 'only-on-failure',
-    headless: true,
+    baseURL: process.env.BASE_URL || "http://localhost:3000",
+    trace: "on-first-retry",
   },
-
-  webServer: {
-    command: 'npm run dev',
-    port: PORT,
-    timeout: 120_000,
-    reuseExistingServer: !process.env.CI,
-    env: {
-      NEXT_PUBLIC_APP_URL: BASE_URL,
-      NEXTAUTH_URL: BASE_URL,
-      STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || 'dummy',
-      PRICE_ID: process.env.PRICE_ID || 'dummy',
-    },
-  },
-
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
   ],
+  // Der Server wird im CI vor den E2E-Tests per "next build && next start" gestartet.
+  // Falls lokal: Playwright startet den Server mit dem folgenden Kommando.
+  webServer: process.env.CI
+    ? undefined
+    : {
+        command: "npm run dev",
+        url: "http://localhost:3000",
+        reuseExistingServer: true,
+        timeout: 120_000,
+      },
 });

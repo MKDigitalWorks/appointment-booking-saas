@@ -38,9 +38,14 @@ jobs:
             npx tsc --noEmit || true
           fi
 
+      # --- Build zuerst ---
+      - name: Build
+        run: npm run build
+
       - name: Install Playwright (browsers)
         run: npx playwright install --with-deps
 
+      # --- E2E nur unter tests/e2e ---
       - name: E2E Smoke Tests
         run: npx playwright test
         env:
@@ -51,5 +56,3 @@ jobs:
           STRIPE_SECRET_KEY: dummy
           PRICE_ID: dummy
 
-      - name: Build
-        run: npm run build
