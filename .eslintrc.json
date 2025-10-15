@@ -8,19 +8,17 @@
     "test-results/",
     "blob-report/",
     "dist/",
-    "coverage/"
+    "coverage/",
+    "app/(marketing)/**"
   ],
   "overrides": [
     {
       "files": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
-      "rules": {
-        // Du kannst hier bei Bedarf später Regeln ergänzen
-      }
+      "rules": {}
     },
     {
       "files": ["tests/**/*", "**/*.spec.ts", "**/*.spec.tsx"],
       "rules": {
-        // Tests etwas lockerer halten
         "@next/next/no-html-link-for-pages": "off"
       }
     }
