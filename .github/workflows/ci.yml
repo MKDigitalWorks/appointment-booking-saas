@@ -14,6 +14,7 @@ jobs:
       NODE_ENV: development
       CI: "true"
       NPM_CONFIG_LOGLEVEL: error
+      NPM_CONFIG_IGNORE_SCRIPTS: "true"
 
     steps:
       - name: Checkout
@@ -26,7 +27,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund --ignore-scripts
 
       - name: Lint (soft)
         if: ${{ hashFiles('.eslintrc.json', '.eslintrc.js') != '' }}

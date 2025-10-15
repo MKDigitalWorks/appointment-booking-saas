@@ -1,4 +1,4 @@
-﻿{
+{
     "name":  "appointment-booking-saas",
     "version":  "1.0.0",
     "private":  true,
@@ -19,7 +19,6 @@
                     "db:seed":  "prisma db seed",
                     "db:studio":  "prisma studio",
                     "db:reset":  "prisma migrate reset --force",
-                    "postinstall":  "prisma generate",
                     "test:unit":  "vitest run"
                 },
     "dependencies":  {
