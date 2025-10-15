@@ -1,8 +1,7 @@
-// app/api/stripe/create-checkout-session/route.ts
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
 
-export const runtime = "nodejs"; // Stripe benötigt Node (nicht Edge)
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
@@ -18,15 +17,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Optional: Metadaten aus Body akzeptieren (z. B. bookingId)
     const body = await req.json().catch(() => ({} as any));
     const metadata = (body?.metadata ?? {}) as Record<string, string>;
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${appUrl}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${appUrl}/checkout-cancelled`,
+      success_url: ${appUrl}/thank-you?session_id={CHECKOUT_SESSION_ID},
+      cancel_url: ${appUrl}/checkout-cancelled,
       metadata,
     });
 
